@@ -96,6 +96,91 @@ Built with ❤️ for the YEPAI AI Hackathon
 
 ---
 
-**StarPlan Talent Star Contender** 🌟  
-Ready for real-world McDonald's operations.
+1- Problem
 
+Title: Employee Scheduling Problem
+
+Description:
+
+We need to schedule 40+ employees (crew + 6 managers) for 12 days.
+
+Each day has different shifts: Breakfast, Lunch, Afternoon, Dinner, Closing.
+
+Each shift has staff demand for different stations: kitchen, counter, mccafe, dessert.
+
+Challenges / Constraints:
+
+Employees may be unavailable on some days.
+
+Max and min weekly hours.
+
+Managers must be present on every shift.
+
+Employees need enough rest between shifts.
+
+Why it’s hard:
+
+Many rules (hard and soft constraints) make manual scheduling slow and error-prone.
+
+Shifts may be understaffed or overstaffed if done by hand.
+
+Optional Visual:
+
+A simple table showing missing coverage for some shifts.
+
+2- Solution
+
+Title: Multi-Agent Scheduler
+
+We built a system with agents that work together to make the schedule automatically.
+
+Agents and What They Do:
+
+DemandForecastAgent → Calculates how many staff are needed for each shift.
+
+AvailabilityAgent → Checks which employees are available.
+
+SkillMatchingAgent → Matches employees to stations based on skills.
+
+SchedulingOptimizerAgent → Assigns employees to shifts using optimization.
+
+ConflictResolutionAgent → Fills gaps if some shifts are missing staff.
+
+ComplianceVerifierAgent → Checks that hours and rules are respected.
+
+Benefits:
+
+All shifts covered, no conflicts.
+
+Balanced work hours for employees.
+
+Handles changes and unavailability automatically.
+
+Generates a ready-to-use Excel schedule.
+
+Optional Visuals:
+
+Example of Excel schedule with shifts and total hours.
+
+Bar chart of weekly hours for employees.
+
+3- MAS Architecture
+
+Title: How Our Agents Work Together
+
+Diagram (Friendly Style):
+
+[DemandForecastAgent] ----+
+                          |
+[AvailabilityAgent] ------> [SkillMatchingAgent] ---> [SchedulingOptimizerAgent] ---> [ConflictResolutionAgent] ---> [ComplianceVerifierAgent] ---> [Final Schedule]
+
+
+Explanation:
+
+Each agent passes information to the next agent.
+
+Data is stored in a shared memory (weekly hours, shift assignments, conflicts).
+
+If any shift is missing staff, the ConflictResolutionAgent fixes it.
+
+The ComplianceVerifierAgent ensures all rules are followed before final output.
